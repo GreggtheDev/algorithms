@@ -26,3 +26,35 @@ class QuickSort {
 
         return i + 1;
     }
+
+    // The main function that implements QuickSort
+    void quickSort(int arr[], int low, int high) {
+        if (low < high) {
+            // pi is partitioning index, arr[pi] is now at right place
+            int pi = partition(arr, low, high);
+
+            // Recursively sort elements before
+            // partition and after partition
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    // Utility function to print the array
+    void printArray(int arr[], int size) {
+        for (int i = 0; i < size; i++)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+
+    // Driver code
+    public static void main(String args[]) {
+        QuickSort qs = new QuickSort();
+        int arr[] = { 4, 1, 3, 9, 7 };
+        int n = arr.length;
+        qs.quickSort(arr, 0, n - 1);
+
+        System.out.println("Sorted array:");
+        qs.printArray(arr, n);
+    }
+}
